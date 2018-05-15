@@ -40,19 +40,19 @@ class BooColorSelector extends PolymerElement {
           @apply --layout-end;
         }
         .red {
-          --paper-slider-active-color: var(--l2t-paper-color-advanced-red, var(--paper-red-700));
-          --paper-slider-knob-color: var(--l2t-paper-color-advanced-red, var(--paper-red-700));
-          --paper-slider-pin-color: var(--l2t-paper-color-advanced-red, var(--paper-red-700));
+          --paper-slider-active-color: red;
+          --paper-slider-knob-color: red;
+          --paper-slider-pin-color: red;
         }
         .green {
-          --paper-slider-active-color: var(--l2t-paper-color-advanced-green, var(--paper-green-700));
-          --paper-slider-knob-color: var(--l2t-paper-color-advanced-green, var(--paper-green-700));
-          --paper-slider-pin-color: var(--l2t-paper-color-advanced-green, var(--paper-green-700));
+          --paper-slider-active-color: green;
+          --paper-slider-knob-color: green;
+          --paper-slider-pin-color: green;
         }
         .blue {
-          --paper-slider-active-color: var(--l2t-paper-color-advanced-blue, var(--paper-blue-700));
-          --paper-slider-knob-color: var(--l2t-paper-color-advanced-blue, var(--paper-blue-700));
-          --paper-slider-pin-color: var(--l2t-paper-color-advanced-blue, var(--paper-blue-700));
+          --paper-slider-active-color: blue;
+          --paper-slider-knob-color: blue;
+          --paper-slider-pin-color: blue;
         }
       </style>
 
