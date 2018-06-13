@@ -2,7 +2,7 @@
   "name": "boo-color-selector",
   "description": "a color selector",
   "main": "boo-color-selector.js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "dependencies": {
     "@polymer/polymer": "^3.0.0",
     "@polymer/paper-slider": "^3.0.0-pre.21",
@@ -14,7 +14,7 @@
     "@polymer/iron-iconset-svg": "^3.0.0-pre.21",
     "@polymer/paper-dropdown-menu": "^3.0.0-pre.21",
     "@webcomponents/webcomponentsjs": "^2.0.0",
-    "boo-window": "0.0.8",
+    "boo-window": "0.0.9",
     "@polymer/iron-flex-layout": "^3.0.0-pre.21",
     "web-animations-js": "^2.3.1"
   },
