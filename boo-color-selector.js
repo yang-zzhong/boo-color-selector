@@ -54,6 +54,17 @@ class BooColorSelector extends PolymerElement {
           --paper-slider-knob-color: blue;
           --paper-slider-pin-color: blue;
         }
+        @media screen and (max-width: 768px) {
+          .colorMixer {
+            @apply --layout-vertical;
+          }
+          .used {
+            @apply --layout-vertical;
+          }
+          .preview {
+            width: 100%;
+          }
+        }
       </style>
 
       <array-selector 
