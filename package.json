@@ -5,12 +5,18 @@
   "version": "0.0.2",
   "dependencies": {
     "@polymer/polymer": "^3.0.0",
-    "@polymer/paper-slider": "^3.0.0-pre.19",
-    "@polymer/paper-button": "^3.0.0-pre.19",
+    "@polymer/paper-slider": "^3.0.0-pre.18",
+    "@polymer/paper-button": "^3.0.0-pre.18",
+    "@polymer/paper-icon-button": "^3.0.0-pre.18",
+    "@polymer/app-layout": "^3.0.0-pre.18",
+    "@polymer/iron-iconset-svg": "^3.0.0-pre.18",
+    "@polymer/paper-dropdown-menu": "^3.0.0-pre.18",
     "@webcomponents/webcomponentsjs": "^2.0.0",
-    "@polymer/iron-flex-layout": "^3.0.0-pre.19"
+    "boo-window": "0.0.6",
+    "@polymer/iron-flex-layout": "^3.0.0-pre.18",
+    "web-animations-js": "^2.3.1"
   },
   "devDependencies": {
-    "@polymer/iron-demo-helpers": "^3.0.0-pre.19"
+    "@polymer/iron-demo-helpers": "^3.0.0-pre.18"
   }
 }

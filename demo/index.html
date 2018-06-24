@@ -7,15 +7,23 @@
     <title>boo-color-selector demo</title>
 
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../node_modules/web-animations-js/web-animations-next-lite.min.js"></script>
 
     <script type="module">
 
       import "@polymer/iron-demo-helpers/demo-pages-shared-styles.js";
       import "@polymer/iron-demo-helpers/demo-snippet.js";
+      import "../boo-color-selector.js";
+      import "../boo-color-dropdown.js";
+      import "../boo-color-dialog.js";
 
     </script>
 
-    <script type="module" src="../boo-color-selector.js"></script>
+    <!--
+    <script type="module" src=""></script>
+    <script type="module" src="../boo-color-dropdown.js"></script>
+    <script type="module" src="../boo-color-dialog.js"></script>
+    -->
 
 
     <custom-style>
@@ -29,6 +37,14 @@
       <demo-snippet>
         <template>
           <boo-color-selector color="#ff0000"></boo-color-selector>
+
+          <boo-color-dropdown vertical-align="bottom" horizontal-align="left">
+            <span>点击选择颜色</span>
+          </boo-color-dropdown>
+          <boo-color-dialog>
+            <span>点击选择颜色</span>
+          </boo-color-dialog>
+
         </template>
       </demo-snippet>
     </div>
