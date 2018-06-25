@@ -1,6 +1,7 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
 import '@polymer/iron-flex-layout/iron-flex-layout.js';
 import '@polymer/paper-slider/paper-slider.js';
+import '@polymer/paper-input/paper-input.js';
 import '@polymer/paper-button/paper-button.js';
 
 /**
@@ -15,6 +16,11 @@ class BooColorSelector extends PolymerElement {
   static get template() {
     return html`
       <style>
+        div.man {
+          @apply --layout-horizontal;
+          @apply --layout-justified;
+          @apply --layout-center;
+        }
         div.used {
           @apply --layout-horizontal;
           @apply --layout-justified;
@@ -30,13 +36,14 @@ class BooColorSelector extends PolymerElement {
           cursor: pointer;
         }
         .preview {
+          min-width: 50px;
           width: 100px;
           height: 100px;
           background-color: black;
         }
         .colorMixer {
           @apply --layout-horizontal;
-          @apply --layout-justify;
+          @apply --layout-justified;
           @apply --layout-end;
         }
         .red {
@@ -71,6 +78,11 @@ class BooColorSelector extends PolymerElement {
         id="selector" 
         items=[[colors]] 
         selected={{_color}}></array-selector>
+
+      <div class="man">
+        <paper-input id="manInput" label="手动输入颜色"></paper-input>
+        <paper-button on-click="_inputedColor">确定</paper-button>
+      </div>
 
       <div class="colorMixer">
         <div class="preview" style="background:[[color]];"></div>
@@ -143,6 +155,10 @@ class BooColorSelector extends PolymerElement {
   _colorFromUsed(e) {
     let item = this.$.colors.itemForElement(e.target);
     this.$.selector.select(item);
+  }
+
+  _inputedColor() {
+    this._color = this.$.manInput.value;
   }
 
   _selectedColorChanged(color) {

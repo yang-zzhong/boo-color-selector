@@ -2,21 +2,22 @@
   "name": "boo-color-selector",
   "description": "a color selector",
   "main": "boo-color-selector.js",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "dependencies": {
     "@polymer/polymer": "^3.0.0",
-    "@polymer/paper-slider": "^3.0.0-pre.18",
-    "@polymer/paper-button": "^3.0.0-pre.18",
-    "@polymer/paper-icon-button": "^3.0.0-pre.18",
-    "@polymer/app-layout": "^3.0.0-pre.18",
-    "@polymer/iron-iconset-svg": "^3.0.0-pre.18",
-    "@polymer/paper-dropdown-menu": "^3.0.0-pre.18",
+    "@polymer/paper-slider": "^3.0.0-pre.19",
+    "@polymer/paper-input": "^3.0.0-pre.19",
+    "@polymer/paper-button": "^3.0.0-pre.19",
+    "@polymer/paper-icon-button": "^3.0.0-pre.19",
+    "@polymer/app-layout": "^3.0.0-pre.19",
+    "@polymer/iron-iconset-svg": "^3.0.0-pre.19",
+    "@polymer/paper-dropdown-menu": "^3.0.0-pre.19",
     "@webcomponents/webcomponentsjs": "^2.0.0",
-    "boo-window": "0.0.6",
-    "@polymer/iron-flex-layout": "^3.0.0-pre.18",
+    "boo-window": "0.0.7",
+    "@polymer/iron-flex-layout": "^3.0.0-pre.19",
     "web-animations-js": "^2.3.1"
   },
   "devDependencies": {
-    "@polymer/iron-demo-helpers": "^3.0.0-pre.18"
+    "@polymer/iron-demo-helpers": "^3.0.0-pre.19"
   }
 }

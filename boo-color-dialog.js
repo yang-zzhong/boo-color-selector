@@ -1,6 +1,7 @@
 import {PolymerElement} from '@polymer/polymer/polymer-element.js';
 import { html } from '@polymer/polymer/lib/utils/html-tag.js';
 import '@polymer/app-layout/app-toolbar/app-toolbar.js'
+import '@polymer/iron-iconset-svg/iron-iconset-svg.js'
 import '@polymer/iron-flex-layout/iron-flex-layout.js'
 import '@polymer/paper-icon-button/paper-icon-button.js'
 import 'boo-window/boo-window.js'
@@ -13,6 +14,14 @@ class BooColorDialog extends PolymerElement {
           @apply --layout-horizontal;
           @apply --layout-justified;
         }
+        boo-window {
+          --boo-window-container: {
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, .4);
+          }
+        }
+        .container {
+          padding: 10px;
+        }
       </style>
       <iron-iconset-svg size="24" name="boo-color-dialog">
         <svg><defs>
@@ -20,9 +29,9 @@ class BooColorDialog extends PolymerElement {
         </defs></svg>
       </iron-iconset-svg>
 
-      <div id="trigger">
+      <span on-click="_openSelector">
         <slot></slot>
-      </div>
+      </span>
 
       <boo-window
         width="400"
@@ -37,12 +46,14 @@ class BooColorDialog extends PolymerElement {
             on-click="_close"></paper-icon-button>
 
         </app-toolbar>
+        <div class="container" slot="content">
 
-        <boo-color-selector 
-          slot="content"
-          color="{{color}}"
-          colors="{{colors}}"
-          on-selected="select"></boo-color-selector>
+          <boo-color-selector 
+            color="{{color}}"
+            colors="{{colors}}"
+            on-selected="select"></boo-color-selector>
+
+        </div>
 
       </boo-window>
     `;
@@ -50,7 +61,7 @@ class BooColorDialog extends PolymerElement {
 
   static get properties() {
     return {
-      _opened: {
+      opened: {
         type: Boolean,
         value: false
       },
@@ -65,11 +76,12 @@ class BooColorDialog extends PolymerElement {
     };
   }
 
-  connectedCallback() {
-    super.connectedCallback();
-    this.$.trigger.addEventListener("click", function() {
-      this._opened = !this._opened;
-    }.bind(this));
+  _openSelector() {
+    this.opened = true;
+  }
+
+  _close() {
+    this.opened = false;
   }
 
   select() {
