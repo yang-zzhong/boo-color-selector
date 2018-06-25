@@ -19,12 +19,6 @@
 
     </script>
 
-    <!--
-    <script type="module" src=""></script>
-    <script type="module" src="../boo-color-dropdown.js"></script>
-    <script type="module" src="../boo-color-dialog.js"></script>
-    -->
-
 
     <custom-style>
       <style is="custom-style" include="demo-pages-shared-styles">
@@ -36,7 +30,9 @@
       <h3>Basic boo-color-selector demo</h3>
       <demo-snippet>
         <template>
-          <boo-color-selector color="#ff0000"></boo-color-selector>
+          <boo-color-selector color="#ff0000">
+              <span>点击选择颜色</span>
+          </boo-color-selector>
 
           <boo-color-dropdown vertical-align="bottom" horizontal-align="left">
             <span>点击选择颜色</span>

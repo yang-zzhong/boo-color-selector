@@ -5,6 +5,7 @@ import '@polymer/iron-iconset-svg/iron-iconset-svg.js'
 import '@polymer/iron-flex-layout/iron-flex-layout.js'
 import '@polymer/paper-icon-button/paper-icon-button.js'
 import 'boo-window/boo-window.js'
+import './boo-color-content.js'
 
 class BooColorDialog extends PolymerElement {
   static get template() {
@@ -48,10 +49,10 @@ class BooColorDialog extends PolymerElement {
         </app-toolbar>
         <div class="container" slot="content">
 
-          <boo-color-selector 
+          <boo-color-content 
             color="{{color}}"
             colors="{{colors}}"
-            on-selected="select"></boo-color-selector>
+            on-selected="select"></boo-color-content>
 
         </div>
 

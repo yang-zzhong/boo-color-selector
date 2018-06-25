@@ -2,10 +2,11 @@
   "name": "boo-color-selector",
   "description": "a color selector",
   "main": "boo-color-selector.js",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "dependencies": {
     "@polymer/polymer": "^3.0.0",
     "@polymer/paper-slider": "^3.0.0-pre.19",
+    "@polymer/iron-media-query": "^3.0.0-pre.19",
     "@polymer/paper-input": "^3.0.0-pre.19",
     "@polymer/paper-button": "^3.0.0-pre.19",
     "@polymer/paper-icon-button": "^3.0.0-pre.19",

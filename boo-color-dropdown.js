@@ -1,6 +1,7 @@
 import {PolymerElement} from '@polymer/polymer/polymer-element.js';
 import { html } from '@polymer/polymer/lib/utils/html-tag.js';
 import '@polymer/paper-menu-button/paper-menu-button.js';
+import './boo-color-content.js';
 
 class BooColorDropdown extends PolymerElement {
   static get template() {
@@ -13,6 +14,7 @@ class BooColorDropdown extends PolymerElement {
       <paper-menu-button 
         horizontal-align="[[horizontalAlign]]"
         vertical-align="[[verticalAlign]]"
+        opened="{{opened}}"
         id="dropdown" ignore-select> 
 
         <div slot="dropdown-trigger">
@@ -20,10 +22,10 @@ class BooColorDropdown extends PolymerElement {
         </div>
 
         <div slot="dropdown-content">
-          <boo-color-selector 
+          <boo-color-content 
             color={{color}}
             colors={{colors}}
-            on-selected="select"></boo-color-selector>
+            on-selected="select"></boo-color-content>
         </div>
 
       </paper-menu-button>
@@ -32,6 +34,10 @@ class BooColorDropdown extends PolymerElement {
 
   static get properties() {
     return {
+      opened: {
+        type: Boolean,
+        value: false
+      },
       color: {
         type: String,
         notify: true
