@@ -18,6 +18,7 @@ class BooColorDialog extends PolymerElement {
         boo-window {
           --boo-window-container: {
             box-shadow: 0px 0px 10px rgba(0, 0, 0, .4);
+            z-index: 100000;
           }
         }
         .container {
