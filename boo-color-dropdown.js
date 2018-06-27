@@ -9,12 +9,16 @@ class BooColorDropdown extends PolymerElement {
       <style>
         [slot=dropdown-content] {
           padding: 10px 15px 10px 10px;
+          background-color: var(--boo-color-bg-color);
+          color: var(--boo-color-fg-color);
         }
       </style>
       <paper-menu-button 
         horizontal-align="[[horizontalAlign]]"
         vertical-align="[[verticalAlign]]"
         opened="{{opened}}"
+        vertical-offset="[[verticalOffset]]"
+        horizontal-offset="[[horizontalOffset]]"
         id="dropdown" ignore-select> 
 
         <div slot="dropdown-trigger">
@@ -22,9 +26,10 @@ class BooColorDropdown extends PolymerElement {
         </div>
 
         <div slot="dropdown-content">
+          <app-toolbar>[[name]]</app-toolbar>
           <boo-color-content 
-            color={{color}}
-            colors={{colors}}
+            color="{{color}}"
+            colors="{{colors}}"
             on-selected="select"></boo-color-content>
         </div>
 
@@ -42,10 +47,16 @@ class BooColorDropdown extends PolymerElement {
         type: String,
         notify: true
       },
+      name: {
+        type: String,
+        value: "选择颜色"
+      },
       colors: {
         type: Array,
         notify: true
       },
+      verticalOffset: Number,
+      horizontalOffset: Number,
       verticalAlign: String,
       horizontalAlign: String
     };

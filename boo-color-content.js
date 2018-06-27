@@ -16,19 +16,17 @@ class BooColorContent extends PolymerElement {
   static get template() {
     return html`
       <style>
-        div.man {
-          @apply --layout-horizontal;
-          @apply --layout-justified;
-          @apply --layout-center;
-        }
         div.used {
           @apply --layout-horizontal;
           @apply --layout-justified;
           @apply --layout-center;
           padding-top: 8px;
+          background-color: inherit;
+          color: inherit;
         }
         div.used>div>span {
           display: inline-block;
+          border: 1px solid rgba(0, 0, 0, .4);
           height: 30px;
           width: 30px;
         }
@@ -39,12 +37,15 @@ class BooColorContent extends PolymerElement {
           min-width: 50px;
           width: 100px;
           height: 100px;
+          border: 1px solid rgba(0, 0, 0, .4);
           background-color: black;
         }
         .colorMixer {
           @apply --layout-horizontal;
           @apply --layout-justified;
           @apply --layout-end;
+          background-color: inherit;
+          color: inherit;
         }
         .red {
           --paper-slider-active-color: red;
@@ -72,6 +73,13 @@ class BooColorContent extends PolymerElement {
             width: 100%;
           }
         }
+        paper-input {
+          --paper-input-container-input: {
+            color: var(--boo-color-fg-color);
+          }
+          --paper-input-container-color: var(--boo-color-fg-color);
+          width: 100%;
+        }
       </style>
 
       <array-selector 
@@ -79,10 +87,7 @@ class BooColorContent extends PolymerElement {
         items=[[colors]] 
         selected={{_color}}></array-selector>
 
-      <div class="man">
-        <paper-input id="manInput" label="手动输入颜色"></paper-input>
-        <paper-button on-click="_inputedColor">确定</paper-button>
-      </div>
+      <paper-input on-input="_inputColor" label="手动输入颜色"></paper-input>
 
       <div class="colorMixer">
         <div class="preview" style="background:[[color]];"></div>
@@ -157,8 +162,8 @@ class BooColorContent extends PolymerElement {
     this.$.selector.select(item);
   }
 
-  _inputedColor() {
-    this._color = this.$.manInput.value;
+  _inputColor(e) {
+    this._color = e.target.value;
   }
 
   _selectedColorChanged(color) {

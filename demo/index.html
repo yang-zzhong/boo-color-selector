@@ -22,6 +22,18 @@
 
     <custom-style>
       <style is="custom-style" include="demo-pages-shared-styles">
+         boo-color-selector {
+          --boo-color-bg-color: green;
+          --boo-color-fg-color: red;
+         }
+         boo-color-dropdown {
+          --boo-color-bg-color: green;
+          --boo-color-fg-color: red;
+         }
+         boo-color-dialog {
+          --boo-color-bg-color: green;
+          --boo-color-fg-color: red;
+         }
       </style>
     </custom-style>
   </head>
@@ -30,14 +42,20 @@
       <h3>Basic boo-color-selector demo</h3>
       <demo-snippet>
         <template>
-          <boo-color-selector color="#ff0000">
-              <span>点击选择颜色</span>
+
+          <boo-color-selector name="我们开始选择颜色了" color="#ff0000">
+            <span>点击选择颜色</span>
           </boo-color-selector>
 
-          <boo-color-dropdown vertical-align="bottom" horizontal-align="left">
+          <boo-color-selector name="我们开始选择颜色了" horizontal-align="right" color="#ff0000">
+            <span>点击选择颜色</span>
+          </boo-color-selector>
+
+          <boo-color-dropdown name="我们开始选择颜色了">
             <span>点击选择颜色</span>
           </boo-color-dropdown>
-          <boo-color-dialog>
+
+          <boo-color-dialog name="我们开始选择颜色了">
             <span>点击选择颜色</span>
           </boo-color-dialog>
 

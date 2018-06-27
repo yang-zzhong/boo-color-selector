@@ -18,11 +18,15 @@ class BooColorDialog extends PolymerElement {
         boo-window {
           --boo-window-container: {
             box-shadow: 0px 0px 10px rgba(0, 0, 0, .4);
+            background-color: var(--boo-color-bg-color);
+            color: var(--boo-color-fg-color); 
             z-index: 100000;
           }
         }
         .container {
           padding: 10px;
+          background-color: var(--boo-color-bg-color);
+          color: var(--boo-color-fg-color);
         }
       </style>
       <iron-iconset-svg size="24" name="boo-color-dialog">
@@ -42,7 +46,7 @@ class BooColorDialog extends PolymerElement {
 
         <app-toolbar slot="move-trigger">
 
-          <span>选择颜色</span>
+          <span>[[name]]</span>
           <paper-icon-button 
             icon="boo-color-dialog:close" 
             on-click="_close"></paper-icon-button>
@@ -66,6 +70,10 @@ class BooColorDialog extends PolymerElement {
       opened: {
         type: Boolean,
         value: false
+      },
+      name: {
+        type: String,
+        value: "选择颜色",
       },
       color: {
         type: String,
