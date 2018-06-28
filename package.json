@@ -2,7 +2,7 @@
   "name": "boo-color-selector",
   "description": "a color selector",
   "main": "boo-color-selector.js",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "dependencies": {
     "@polymer/polymer": "^3.0.0",
     "@polymer/paper-slider": "^3.0.0-pre.21",

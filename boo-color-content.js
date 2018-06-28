@@ -77,6 +77,12 @@ class BooColorContent extends PolymerElement {
           --paper-input-container-input: {
             color: var(--boo-color-fg-color);
           }
+          --paper-input-container-label: {
+            color: var(--boo-color-fg-color);
+          }
+          --paper-input-container-label-focus: {
+            color: var(--boo-color-fg-color);
+          }
           --paper-input-container-color: var(--boo-color-fg-color);
           width: 100%;
         }
@@ -87,7 +93,7 @@ class BooColorContent extends PolymerElement {
         items=[[colors]] 
         selected={{_color}}></array-selector>
 
-      <paper-input on-input="_inputColor" value="[[color]]" label="手动输入颜色"></paper-input>
+      <paper-input value="{{_iColor}}" label="手动输入颜色"></paper-input>
 
       <div class="colorMixer">
         <div class="preview" style="background:[[color]];"></div>
@@ -123,6 +129,10 @@ class BooColorContent extends PolymerElement {
       _blue: {
         type: Number,
         observer: "_colorChanged",
+      },
+      _iColor: {
+        type: String,
+        observer: "_iColorChanged",
       },
       color: {
         type: String,
@@ -162,6 +172,12 @@ class BooColorContent extends PolymerElement {
     this.$.selector.select(item);
   }
 
+  _iColorChanged(color) {
+    if (/^#[0-9a-fA-F]{6}.*/.test(color)) {
+      this.color = color.substring(0, 7);
+    }
+  }
+
   _inputColor(e) {
     this._color = e.target.value;
   }
@@ -177,6 +193,7 @@ class BooColorContent extends PolymerElement {
       this._red = parseInt(color.substring(1, 3), 16);
       this._green = parseInt(color.substring(3, 5), 16);
       this._blue = parseInt(color.substring(5, 7), 16);
+      this._iColor = color;
     }
   }
 
