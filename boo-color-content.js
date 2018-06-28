@@ -87,7 +87,7 @@ class BooColorContent extends PolymerElement {
         items=[[colors]] 
         selected={{_color}}></array-selector>
 
-      <paper-input on-input="_inputColor" label="手动输入颜色"></paper-input>
+      <paper-input on-input="_inputColor" value="[[color]]" label="手动输入颜色"></paper-input>
 
       <div class="colorMixer">
         <div class="preview" style="background:[[color]];"></div>
