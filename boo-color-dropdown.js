@@ -12,6 +12,9 @@ class BooColorDropdown extends PolymerElement {
           background-color: var(--boo-color-bg-color);
           color: var(--boo-color-fg-color);
         }
+        paper-menu-button {
+          @apply --boo-color-dropdown-button;
+        }
       </style>
       <paper-menu-button 
         horizontal-align="[[horizontalAlign]]"

@@ -12,6 +12,9 @@ class BooColorSelector extends PolymerElement {
           --boo-color-dropdown: {
             @apply --boo-color-selector;
           }
+          --boo-color-dropdown-button: {
+            padding: 0px;
+          }
           --boo-color-dropdown-input: {
             @apply --boo-color-selector-input;
           }
@@ -40,6 +43,7 @@ class BooColorSelector extends PolymerElement {
         horizontal-align="[[horizontalAlign]]"
         vertical-align="[[verticalAlign]]"
         horizontal-offset="[[_ho]]"
+        vertical-offset="-16"
         color="{{color}}"></boo-color-dropdown>
 
       <boo-color-dialog
