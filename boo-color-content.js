@@ -36,7 +36,7 @@ class BooColorContent extends PolymerElement {
         .preview {
           min-width: 50px;
           width: 100px;
-          height: 100px;
+          height: 124px;
           border: 1px solid rgba(0, 0, 0, .4);
           background-color: black;
         }
@@ -93,7 +93,7 @@ class BooColorContent extends PolymerElement {
         items=[[colors]] 
         selected={{_color}}></array-selector>
 
-      <paper-input value="{{_iColor}}" label="手动输入颜色"></paper-input>
+      <paper-input value="{{iColor}}" label="手动输入颜色"></paper-input>
 
       <div class="colorMixer">
         <div class="preview" style="background:[[color]];"></div>
@@ -104,6 +104,8 @@ class BooColorContent extends PolymerElement {
             immediate-value="{{_green}}" value="[[_green]]"></paper-slider>
           <paper-slider min="0" pin max="255" class="blue"
             immediate-value="{{_blue}}" value="[[_blue]]"></paper-slider>
+          <paper-slider min="0" pin max="100" class="opacity"
+            immediate-value="{{_opacity}}"></paper-slider>
         </div>
       </div>
       <div class="used">
@@ -130,9 +132,9 @@ class BooColorContent extends PolymerElement {
         type: Number,
         observer: "_colorChanged",
       },
-      _iColor: {
-        type: String,
-        observer: "_iColorChanged",
+      _opacity: {
+        type: Number,
+        observer: "_colorChanged",
       },
       color: {
         type: String,
@@ -142,6 +144,10 @@ class BooColorContent extends PolymerElement {
       colors: {
         type: Array,
         value: []
+      },
+      iColor: {
+        type: String,
+        observer: '_iColorChanged',
       },
       _color: {
         type: String,
@@ -155,31 +161,12 @@ class BooColorContent extends PolymerElement {
   }
 
   _colorChanged() {
-    if(this._red === '' || this._green === '' || this._blue === '') {
-      return
-    }
-    var r = this._red.toString(16);
-    r = r.length<2 ? "0"+ r : r;
-    var g = this._green.toString(16);
-    g = g.length< 2 ? "0" + g : g;
-    var b = this._blue.toString(16);
-    b = b.length<2 ? "0" + b : b;
-    this.color = "#" + r + g + b;
+    this.color = 'rgba(' + [this._red, this._green, this._blue, this._opacity / 100].join(',') + ')';
   }
 
   _colorFromUsed(e) {
     let item = this.$.colors.itemForElement(e.target);
     this.$.selector.select(item);
-  }
-
-  _iColorChanged(color) {
-    if (/^#[0-9a-fA-F]{6}.*/.test(color)) {
-      this.color = color.substring(0, 7);
-    }
-  }
-
-  _inputColor(e) {
-    this._color = e.target.value;
   }
 
   _selectedColorChanged(color) {
@@ -190,10 +177,29 @@ class BooColorContent extends PolymerElement {
 
   _rgbToSliders(color) {
     if (color) {
+      let cs = color.replace(/^rgba\(/, '').replace(/\)$/, '').split(',');
+      this._red = cs[0] || 0;
+      this._green = cs[1] || 0;
+      this._blue = cs[2] || 0;
+      this._opacity = (cs[3] || 0) * 100;
+    }
+  }
+
+  _iColorChanged(color) {
+    if (/^\#[a-fA-F0-9]{6}$/.test(color.trim())) {
+      this.color = this._convert(color);
+    }
+    if (/^rgba\(\d{0,3}\,\d{0,3}\,\d{0,3}(\,\d{0,3}){0,1}\)/.test(color)) {
+      this.color = color;
+    }
+  }
+
+  _convert(color) {
+    if (color) {
       this._red = parseInt(color.substring(1, 3), 16);
       this._green = parseInt(color.substring(3, 5), 16);
       this._blue = parseInt(color.substring(5, 7), 16);
-      this._iColor = color;
+      this._opacity = 100;
     }
   }
 
