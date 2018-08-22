@@ -41,6 +41,7 @@ class BooColorDialog extends PolymerElement {
 
       <boo-window
         width="400"
+        id="win"
         opened="{{opened}}"
         pos-policy="center">
 
