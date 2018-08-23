@@ -135,11 +135,13 @@ class BooColorContent extends PolymerElement {
       _opacity: {
         type: Number,
         observer: "_colorChanged",
+        value: 100
       },
       color: {
         type: String,
         notify: true,
-        observer: '_rgbToSliders'
+        reflectToAttribute: true,
+        observer: '_colorToSliders'
       },
       colors: {
         type: Array,
@@ -161,7 +163,15 @@ class BooColorContent extends PolymerElement {
   }
 
   _colorChanged() {
-    this.color = 'rgba(' + [this._red, this._green, this._blue, this._opacity / 100].join(',') + ')';
+    clearTimeout(this._timer);
+    this._timer = setTimeout(() => {
+      this.color = 'rgba(' + [
+        this._red,
+        this._green,
+        this._blue,
+        (this._opacity || 100) / 100
+      ].join(',') + ')';
+    }, 1);
   }
 
   _colorFromUsed(e) {
@@ -175,13 +185,14 @@ class BooColorContent extends PolymerElement {
     }
   }
 
-  _rgbToSliders(color) {
+  _colorToSliders(color) {
     if (color) {
       let cs = color.replace(/^rgba\(/, '').replace(/\)$/, '').split(',');
-      this._red = cs[0] || 0;
-      this._green = cs[1] || 0;
-      this._blue = cs[2] || 0;
-      this._opacity = (cs[3] || 0) * 100;
+      this._red = parseInt((cs[0] || "0").trim());
+      this._green = parseInt((cs[1] || "0").trim());
+      this._blue = parseInt((cs[2] || "0").trim());
+      this._opacity = parseFloat((cs[3] || "100").trim()) * 100;
+      this.iColor = color;
     }
   }
 
@@ -189,8 +200,8 @@ class BooColorContent extends PolymerElement {
     if (/^\#[a-fA-F0-9]{6}$/.test(color.trim())) {
       this.color = this._convert(color);
     }
-    if (/^rgba\(\d{0,3}\,\d{0,3}\,\d{0,3}(\,\d{0,3}){0,1}\)/.test(color)) {
-      this.color = color;
+    if (/^rgba\(\d{0,3}\,\s*\d{0,3}\,\s*\d{0,3}(\,\s*\d{0,3}){0,1}\)$/.test(color)) {
+      this._colorToSliders(color);
     }
   }
 
