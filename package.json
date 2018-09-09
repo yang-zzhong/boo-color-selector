@@ -4,7 +4,7 @@
   "main": "boo-color-selector.js",
   "repository": "https://github.com/yang-zzhong/boo-color-selector",
   "license": "MIT",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "dependencies": {
     "@polymer/paper-slider": "^3.0.1",
     "@polymer/iron-media-query": "^3.0.1",
@@ -14,7 +14,7 @@
     "@polymer/app-layout": "^3.0.1",
     "@polymer/iron-iconset-svg": "^3.0.1",
     "@polymer/paper-dropdown-menu": "^3.0.1",
-    "boo-window": "0.1.7",
+    "boo-window": "0.2.0",
     "@polymer/iron-flex-layout": "^3.0.1"
   },
   "devDependencies": {
