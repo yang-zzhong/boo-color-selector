@@ -141,6 +141,10 @@ class BooColorContent extends PolymerElement {
         type: String,
         notify: true,
         reflectToAttribute: true,
+        observer: '_colorToVal'
+      },
+      __color: {
+        type: String,
         observer: '_colorToSliders'
       },
       colors: {
@@ -163,8 +167,8 @@ class BooColorContent extends PolymerElement {
   }
 
   _colorChanged() {
-    clearTimeout(this._timer);
-    this._timer = setTimeout(() => {
+    clearTimeout(this.timer);
+    this.timer = setTimeout(() => {
       this.color = 'rgba(' + [
         this._red,
         this._green,
@@ -185,18 +189,32 @@ class BooColorContent extends PolymerElement {
     }
   }
 
-  _colorToSliders(color) {
+  _colorToSliders(color, old) {
+    if (color == old) {
+      return;
+    }
     if (color) {
-      let cs = color.replace(/^rgba\(/, '').replace(/\)$/, '').split(',');
+      let cs = color.replace(/(^rgba\()|\)|(^rgb\()/g, '').split(',');
       this._red = parseInt((cs[0] || "0").trim());
       this._green = parseInt((cs[1] || "0").trim());
       this._blue = parseInt((cs[2] || "0").trim());
-      this._opacity = parseFloat((cs[3] || "100").trim()) * 100;
+      this._opacity = parseFloat((cs[3] || "1").trim()) * 100;
       this.iColor = color;
     }
   }
 
-  _iColorChanged(color) {
+  _colorToVal() {
+    let color = this.shadowRoot.querySelector('.preview'); 
+    let computed = window.getComputedStyle(color);
+    if (this.__color != computed.backgroundColor) {
+      this.__color = computed.backgroundColor;
+    }
+  }
+
+  _iColorChanged(color, old) {
+    if (color == old) {
+      return;
+    }
     if (/^\#[a-fA-F0-9]{6}$/.test(color.trim())) {
       this.color = this._convert(color);
     }
